@@ -1,0 +1,149 @@
+using System;
+using System.Diagnostics.Eventing.Reader;
+using System.Globalization;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading;
+using NetSuiteSocket;
+using NetSuiteSocket.Server;
+
+namespace NetSuiteTCP
+{
+    [Serializable]
+    public class ChatPaqueteBE {
+        public string name { get; set; }
+        public string platform { get; set; }
+        public string formId { get; set; }
+
+        public string userDestino { get; set; }
+        public int status { get; set; }
+
+        public ChatPaqueteBE() { }
+
+
+        public string ToSerializedJSon()
+        {
+            const string returnCarr = "\r\n";
+
+            string cmll = "\"";
+            Type typeData = this.GetType();
+            int idx = 0;
+            string Structura = "{";
+            Structura += returnCarr;
+            foreach (var propertyInfo in typeData.GetProperties())
+            {
+                if (propertyInfo.GetValue(this, propertyInfo.GetIndexParameters()) != null)
+                {
+                    Structura += ((idx==0)?"": ",") + propertyInfo.Name.ToString() + ":" + cmll +  propertyInfo.GetValue(this, propertyInfo.GetIndexParameters()) + cmll;
+                }
+                else
+                {
+                    Structura += ((idx == 0) ? "" : ",") + propertyInfo.Name.ToString() + ":" + cmll +cmll;
+                }
+                Structura += returnCarr;
+                idx++;
+            }
+            Structura += "}";
+            return Structura;
+        }
+
+    }
+  public class Chat : WebSocketBehavior
+  {
+        private string     _name;
+        private static int _number = 0;
+        private string     _prefix;
+        private const string cmll = "\"";
+        private const string DosPuntos = ":";
+        private const string KEYQParamUserName = "name";
+        private const string KEYQParamPlataforma = "platform";
+        private const string KEYQParamFormId = "formId";
+
+        const ushort CLOSE_NORMAL = 1000;
+        const ushort CLOSE_GOING_AWAY = 1001;
+        const ushort CLOSE_PROTOCOL_ERROR = 1002;
+        const ushort CLOSE_UNSUPPORTED = 1003;
+        const ushort CLOSE_NO_STATUS = 1005;
+
+        public Chat ()
+    {
+      _prefix = "anon#";
+    }
+
+    public string Prefix {
+      get {
+        return _prefix;
+      }
+
+      set {
+        _prefix = !value.IsNullOrEmpty () ? value : "anon#";
+      }
+    }
+
+    private string getName ()
+    {
+      var name = QueryString["name"];
+
+      return !name.IsNullOrEmpty () ? name : _prefix + getNumber ();
+    }
+
+    private static int getNumber ()
+    {
+      return Interlocked.Increment (ref _number);
+    }
+
+    protected override void OnClose (CloseEventArgs e)
+    {
+      if (_name == null)
+        return;
+
+            switch (e.Code) {
+                case CLOSE_NO_STATUS:
+                    //Cierra y comunica a todos los contactos su estado
+                    ChatPaqueteBE chatPaqueteBE = new ChatPaqueteBE();
+                    chatPaqueteBE.name = getName();
+                    chatPaqueteBE.platform = QueryString[KEYQParamPlataforma];
+                    chatPaqueteBE.formId = QueryString[KEYQParamFormId];
+                    chatPaqueteBE.status = 0;
+
+                    Sessions.Broadcast(chatPaqueteBE.ToSerializedJSon());
+                    break;
+                default:
+                    //cancela el cierre de alguna manera
+
+                    break;
+            }
+
+         /*
+
+      var fmt = "{0} got logged off...";
+      var msg = String.Format (fmt, _name);
+
+      Sessions.Broadcast (msg);*/
+
+    }
+
+    protected override void OnMessage (MessageEventArgs e)
+    {
+      var fmt = "{0}: {1}";
+      var msg = String.Format (fmt, _name, e.Data);
+
+      Sessions.Broadcast (msg);
+    }
+
+    protected override void OnOpen ()
+    {
+      _name = getName ();
+       
+//       string threadMsg = "{" + KEYQParamUserName + DosPuntos  + cmll + _name + cmll +"," + KEYQParamPlataforma + DosPuntos + cmll + Plataforma + cmll +","+ KEYQParamFormId + DosPuntos + cmll +  FormId  +cmll + ",status:"+ cmll+ "1" + cmll + "}";
+
+            ChatPaqueteBE chatPaqueteBE = new ChatPaqueteBE ();
+            chatPaqueteBE.name = getName();
+            chatPaqueteBE.platform = QueryString[KEYQParamPlataforma];
+            chatPaqueteBE.formId = QueryString[KEYQParamFormId];
+            chatPaqueteBE.status = 1;
+
+            Sessions.Broadcast (chatPaqueteBE.ToSerializedJSon());
+    }
+  }
+}
