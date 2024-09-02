@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C28B8276-08A7-479A-BABE-E04DD638097F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Controladora</RootNamespace>
+    <AssemblyName>Controladora</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CTestOracle.cs" />
+    <Compile Include="General\cCentroCosto.cs" />
+    <Compile Include="General\cClaseExtend.cs" />
+    <Compile Include="General\CCliente.cs" />
+    <Compile Include="General\CItemTablaGeneral.cs" />
+    <Compile Include="GestionActivoFijo\cActivoFijo.cs" />
+    <Compile Include="GestionCalidad\CInspeccionAnexo.cs" />
+    <Compile Include="GestionCalidad\Cinspecciones.cs" />
+    <Compile Include="GestionCalidad\CInspeccionUsuarioFirmante.cs" />
+    <Compile Include="GestionCalidad\CInspectores.cs" />
+    <Compile Include="GestionCalidad\CInspectorInspecciones.cs" />
+    <Compile Include="GestionCalidad\CProyectoActividad.cs" />
+    <Compile Include="GestionCalidad\CResponsableArea.cs" />
+    <Compile Include="GestionCalidad\CResponsableAreaDetalle.cs" />
+    <Compile Include="GestionContabilidad\CBalance.cs" />
+    <Compile Include="GestionContabilidad\CEstados.cs" />
+    <Compile Include="GestionContabilidad\CGeneral.cs" />
+    <Compile Include="GestionContabilidad\cOperaciones.cs" />
+    <Compile Include="GestionContabilidad\CPagos.cs" />
+    <Compile Include="GestionCostos\CCostos.cs" />
+    <Compile Include="GestionCostos\CPagos.cs" />
+    <Compile Include="GestionFinanciera\Tesoreria\CInterbancario.cs" />
+    <Compile Include="GestionLogistica\cBienes.cs" />
+    <Compile Include="GestionLogistica\cGeneral.cs" />
+    <Compile Include="GestionLogistica\cMateriales.cs" />
+    <Compile Include="GestionLogistica\cOrdenes.cs" />
+    <Compile Include="GestionLogistica\cProcesoSelec.cs" />
+    <Compile Include="GestionLogistica\cProveedores.cs" />
+    <Compile Include="GestionLogistica\cProyectos.cs" />
+    <Compile Include="GestionLogistica\cRequerimientos.cs" />
+    <Compile Include="GestionLogistica\cServicios.cs" />
+    <Compile Include="GestionLogistica\cStock.cs" />
+    <Compile Include="GestionLogistica\cTestMySQL.cs" />
+    <Compile Include="GestionPersonal\CMarcaciones.cs" />
+    <Compile Include="GestionPersonal\CPersonal.cs" />
+    <Compile Include="GestionPersonal\CZKFinger.cs" />
+    <Compile Include="GestionProduccion\CActividad.cs" />
+    <Compile Include="GestionProduccion\CGeneral.cs" />
+    <Compile Include="GestionProduccion\CMateriales.cs" />
+    <Compile Include="GestionProduccion\CMob.cs" />
+    <Compile Include="GestionProduccion\COrdenes.cs" />
+    <Compile Include="GestionProduccion\COt.cs" />
+    <Compile Include="GestionProduccion\COtsValorizacion.cs" />
+    <Compile Include="GestionProduccion\CProyectos.cs" />
+    <Compile Include="GestionProduccion\CValorizacion.cs" />
+    <Compile Include="GestionProyectos\cOrdenes.cs" />
+    <Compile Include="GestionProyecto\CAdquisiciones.cs" />
+    <Compile Include="GestionProyecto\CFacturacion.cs" />
+    <Compile Include="GestionProyecto\CMateriales.cs" />
+    <Compile Include="GestionProyecto\CMob.cs" />
+    <Compile Include="GestionProyecto\COrdenes.cs" />
+    <Compile Include="GestionProyecto\COt.cs" />
+    <Compile Include="GestionProyecto\CPagos.cs" />
+    <Compile Include="GestionReportes\CArchivoCompartido.cs" />
+    <Compile Include="GestionReportes\CExploradorReporte.cs" />
+    <Compile Include="GestionReportes\CObjeto.cs" />
+    <Compile Include="GestionReportes\CObjetoConfigAttr.cs" />
+    <Compile Include="GestionReportes\CObjetoMapeoExport.cs" />
+    <Compile Include="GestionReportes\CObjetoPrivilegio.cs" />
+    <Compile Include="GestionReportes\CObjetoReporteCompartido.cs" />
+    <Compile Include="GestionReportes\CUsuarioReporte.cs" />
+    <Compile Include="GestionTesoreria\cBalance.cs" />
+    <Compile Include="GestionTesoreria\cCobros.cs" />
+    <Compile Include="GestionTesoreria\cPagos.cs" />
+    <Compile Include="HelpDesk\ChatBox\CCBContactoGrupo.cs" />
+    <Compile Include="HelpDesk\ChatBox\CCBHistorialMsg.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seguridad\CUsuario.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AccesoDatos\AccesoDatos.csproj">
+      <Project>{df133c4f-dd56-43d0-9d8d-e0b158ab6b02}</Project>
+      <Name>AccesoDatos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EntidadNegocio\EntidadNegocio.csproj">
+      <Project>{c16ecdd2-de1f-4c04-a3cf-b56d3009b3cd}</Project>
+      <Name>EntidadNegocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Log\Log.csproj">
+      <Project>{4e4ad53f-1cdb-40f0-9c57-a1acb69d709b}</Project>
+      <Name>Log</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="GestionComercial\" />
+    <Folder Include="RecursosHumanos\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
