@@ -89,7 +89,32 @@ namespace WSCore.HelpDesk.ChatBot
             return (new CCBMensajeContendido()).Inserta(oMensajeContenidoBE);
         }
 
+        [WebMethod(Description = "Insertar Modficar Contact y grupo")]
+        public string IRegistrarContactoyGrupo(int IdContacto,  int IsGrupo, string NombreGrupo, string FotoGrupo, string LIB_JS_SRVBROKER,string Descripcion, string CodPersonal,int IdUsuario)
+        {
+            CBContactoGrupoBE oCBContactoGrupoBE = new CBContactoGrupoBE();
+            oCBContactoGrupoBE.IdContacto = IdContacto;
+            oCBContactoGrupoBE.IsGrupo = IsGrupo;
+            oCBContactoGrupoBE.NombreGrupo = NombreGrupo;
+            oCBContactoGrupoBE.FotoGrupo = FotoGrupo;
+            oCBContactoGrupoBE.LIB_JS_SRVBROKER = LIB_JS_SRVBROKER;
+            oCBContactoGrupoBE.Descripcion = Descripcion;
+            oCBContactoGrupoBE.CodPersonal = CodPersonal;
+            oCBContactoGrupoBE.IdUsuario = IdUsuario;
 
+            return (new CCBContactoGrupo()).Insertar(oCBContactoGrupoBE);
+        }
+        [WebMethod(Description = "Insertar Modficar COntact y grupo")]
+        public string RegistrarContactoyGrupo(CBContactoGrupoBE oCBContactoGrupoBE)
+        {
+            return (new CCBContactoGrupo()).Insertar(oCBContactoGrupoBE);
+        }
+
+        [WebMethod(Description = "Cambia el estado del  Contact o grupo")]
+        public string ActualizaEstadoContacto(string CodPersonal, int IdEstado, string UserName)
+        {
+            return (new CCBContactoGrupo()).ActualizaEstado(CodPersonal, IdEstado, UserName);
+        }
 
     }
 }
