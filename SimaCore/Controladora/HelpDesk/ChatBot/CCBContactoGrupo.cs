@@ -1,5 +1,7 @@
 ﻿using AccesoDatos.NoTransaccional.HelpDesk.ChatBot;
+using AccesoDatos.Transaccional.HelpDesk.ChatBot;
 using Controladora.GestionPersonal;
+using EntidadNegocio;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -31,6 +33,14 @@ namespace Controladora.HelpDesk.ChatBot
         {
             return (new CBContactoGrupoNTAD()).LstContactSendtoGrupo(IdContactGrupo, UserName);
         }
-    }
+        public string Insertar(BaseBE oBaseBE)
+        {
+            return (new CBContactoGrupoTAD()).Inserta(oBaseBE);
+        }
+        public string ActualizaEstado(string CodPersonal, int IdEstado, string UserName)
+        {
+            return (new CBContactoGrupoTAD()).ActualizaEstado(CodPersonal, IdEstado, UserName);
+        }
+     }
 
 }
