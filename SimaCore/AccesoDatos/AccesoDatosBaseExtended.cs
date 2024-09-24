@@ -13,6 +13,7 @@ using Oracle.DataAccess.Client;
 using Log;
 using static AccesoDatos.BaseAD;
 using Utilitario;
+using Google.Protobuf.WellKnownTypes;
 
 namespace AccesoDatos
 {
@@ -228,6 +229,7 @@ namespace AccesoDatos
 
         public static object ExecuteNonQuery(this Microsoft.Practices.EnterpriseLibrary.Data.Database odbGeneral, bool Sup, string storeProcedureName, Oracle.DataAccess.Client.OracleParameter[] Params)
         {
+            string[]NomParam = new string[Params.Length];int Idx = 0;string JSonBE = "";
             object IdPrc;
             try
             {
@@ -244,12 +246,33 @@ namespace AccesoDatos
                             oParam.Value = oParam.Value.ToString().Replace("[s]", " ");
                         }
                     }
+
+                    if ((oParam.Direction == ParameterDirection.Output) || (oParam.Direction == ParameterDirection.InputOutput))
+                    {
+                        NomParam[Idx] = oParam.ParameterName;
+                    }
+                    Idx++;
+
                     cmd.Parameters.Add(oParam);
                 }
+
                 IdPrc = cmd.ExecuteNonQuery();
+                Idx = 0;
+                int IdParam = 0;
+                foreach (string nParam in NomParam)
+                {
+                    if(nParam!=null){
+                        Params[Idx].Value = cmd.Parameters[nParam].Value.ToString();
+                        JSonBE += ((IdParam==0)?"":",") + Params[Idx].ParameterName + ":" + "'" + Params[Idx].Value + "'";
+                        IdParam++;
+                    }
+                    Idx++;
+                }
+                JSonBE="{"+ JSonBE +"}";
+        
                 cn.Close();
                 cn.Dispose();
-                return IdPrc;
+                return (Idx>0)? JSonBE : IdPrc;
             }
             catch (Exception ex)
             {
