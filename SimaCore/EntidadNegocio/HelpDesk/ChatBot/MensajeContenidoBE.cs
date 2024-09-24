@@ -11,10 +11,8 @@ namespace EntidadNegocio.HelpDesk.ChatBot
     {
         public int IdMiembro{  get; set; }
         public string Texto { get; set; }
-
         public int  IdContactoOrigen { get; set; }
         public int IdContactoDestino { get; set; }
-
         public string JSonBE { get; set; }
     }
 }
