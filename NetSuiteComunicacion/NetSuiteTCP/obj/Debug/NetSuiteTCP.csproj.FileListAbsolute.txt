@@ -1,0 +1,10 @@
+C:\NetSuite\NetSuiteComunicacion\NetSuiteTCP\bin\Debug\NetSuiteTCP.exe.config
+C:\NetSuite\NetSuiteComunicacion\NetSuiteTCP\bin\Debug\NetSuiteTCP.exe
+C:\NetSuite\NetSuiteComunicacion\NetSuiteTCP\bin\Debug\NetSuiteTCP.pdb
+C:\NetSuite\NetSuiteComunicacion\NetSuiteTCP\bin\Debug\NetSuiteSocket.dll
+C:\NetSuite\NetSuiteComunicacion\NetSuiteTCP\bin\Debug\NetSuiteSocket.pdb
+C:\NetSuite\NetSuiteComunicacion\NetSuiteTCP\obj\Debug\NetSuiteTCP.csproj.AssemblyReference.cache
+C:\NetSuite\NetSuiteComunicacion\NetSuiteTCP\obj\Debug\NetSuiteTCP.csproj.CoreCompileInputs.cache
+C:\NetSuite\NetSuiteComunicacion\NetSuiteTCP\obj\Debug\NetSuite.3CC907AF.Up2Date
+C:\NetSuite\NetSuiteComunicacion\NetSuiteTCP\obj\Debug\NetSuiteTCP.exe
+C:\NetSuite\NetSuiteComunicacion\NetSuiteTCP\obj\Debug\NetSuiteTCP.pdb

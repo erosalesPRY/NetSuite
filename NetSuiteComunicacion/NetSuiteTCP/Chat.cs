@@ -14,9 +14,10 @@ namespace NetSuiteTCP
         public string name { get; set; }
         public string platform { get; set; }
         public string formId { get; set; }
-
+        public string codPersonal { get; set; }
         public string userDestino { get; set; }
-        public int status { get; set; }
+        public string  status { get; set; }
+        public string idContacto { get; set; }
 
         public ChatPaqueteBE() { }
 
@@ -58,6 +59,8 @@ namespace NetSuiteTCP
         private const string KEYQParamUserName = "name";
         private const string KEYQParamPlataforma = "platform";
         private const string KEYQParamFormId = "formId";
+        private const string KEYQParamCodPer = "CodPer";
+        private const string KEYQParamIdContacto = "IdContac";
 
         const ushort CLOSE_NORMAL = 1000;
         const ushort CLOSE_GOING_AWAY = 1001;
@@ -103,8 +106,8 @@ namespace NetSuiteTCP
                     ChatPaqueteBE chatPaqueteBE = new ChatPaqueteBE();
                     chatPaqueteBE.name = getName();
                     chatPaqueteBE.platform = QueryString[KEYQParamPlataforma];
-                    chatPaqueteBE.formId = QueryString[KEYQParamFormId];
-                    chatPaqueteBE.status = 0;
+                    chatPaqueteBE.status = "0";
+                    //Avisar a todos los contactos que el usuario termino la session
 
                     Sessions.Broadcast(chatPaqueteBE.ToSerializedJSon());
                     break;
@@ -125,25 +128,24 @@ namespace NetSuiteTCP
 
     protected override void OnMessage (MessageEventArgs e)
     {
-      var fmt = "{0}: {1}";
-      var msg = String.Format (fmt, _name, e.Data);
-
-      Sessions.Broadcast (msg);
+      Sessions.Broadcast (e.Data);
     }
 
     protected override void OnOpen ()
     {
       _name = getName ();
-       
-//       string threadMsg = "{" + KEYQParamUserName + DosPuntos  + cmll + _name + cmll +"," + KEYQParamPlataforma + DosPuntos + cmll + Plataforma + cmll +","+ KEYQParamFormId + DosPuntos + cmll +  FormId  +cmll + ",status:"+ cmll+ "1" + cmll + "}";
 
-            ChatPaqueteBE chatPaqueteBE = new ChatPaqueteBE ();
-            chatPaqueteBE.name = getName();
-            chatPaqueteBE.platform = QueryString[KEYQParamPlataforma];
-            chatPaqueteBE.formId = QueryString[KEYQParamFormId];
-            chatPaqueteBE.status = 1;
+        ChatPaqueteBE chatPaqueteBE = new ChatPaqueteBE ();
+        chatPaqueteBE.name = _name;
+        chatPaqueteBE.platform = QueryString[KEYQParamPlataforma];
+        chatPaqueteBE.formId = QueryString[KEYQParamFormId];
+        chatPaqueteBE.name = QueryString[KEYQParamUserName];
+        chatPaqueteBE.codPersonal = QueryString[KEYQParamCodPer];
+        chatPaqueteBE.idContacto= QueryString[KEYQParamIdContacto];
+        chatPaqueteBE.status = "1";
+            string oResponse = "chatPaqueteBE|" + chatPaqueteBE.ToSerializedJSon();
 
-            Sessions.Broadcast (chatPaqueteBE.ToSerializedJSon());
+        Sessions.Broadcast (oResponse);
     }
   }
 }

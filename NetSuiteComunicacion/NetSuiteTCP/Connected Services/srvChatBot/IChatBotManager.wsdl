@@ -1,0 +1,960 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="DetalleContacto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodPersonal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DetalleContactoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DetalleContactoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarContatos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NOMBRECONTACTO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarContatosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarContatosResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarMiembros">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdContacto" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListarMiembrosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarMiembrosResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LstHistorialDialogo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IdContactoOrg" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdContactoDes" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LstHistorialDialogoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LstHistorialDialogoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LstHistorialDialogoContenido">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Idmsg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LstHistorialDialogoContenidoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LstHistorialDialogoContenidoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LstHistorialDialogoContenidoLikes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IdContents" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LstHistorialDialogoContenidoLikesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LstHistorialDialogoContenidoLikesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsMiembrodeGrupo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdContactGrupo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodPersonal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsMiembrodeGrupoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IsMiembrodeGrupoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LstContactSendtoGrupo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdContactGrupo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LstContactSendtoGrupoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LstContactSendtoGrupoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarMensajeyContenidoServer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oMensajeContenidoBE" type="tns:MensajeContenidoBE" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MensajeContenidoBE">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseBE">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="IdMiembro" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Texto" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="IdContactoOrigen" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="IdContactoDestino" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="JSonBE" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BaseBE">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Observacion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdEstado" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImgEstado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreEstado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdCodigo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdUsuario" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ambiente" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RegistrarMensajeyContenidoServerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistrarMensajeyContenidoServerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarMensajeyContenidoCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdMiembro" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Texto" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdContactOrg" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdContactDes" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarMensajeyContenidoClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistrarMensajeyContenidoClienteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataTable" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+            <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="DetalleContactoSoapIn">
+    <wsdl:part name="parameters" element="tns:DetalleContacto" />
+  </wsdl:message>
+  <wsdl:message name="DetalleContactoSoapOut">
+    <wsdl:part name="parameters" element="tns:DetalleContactoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarContatosSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarContatos" />
+  </wsdl:message>
+  <wsdl:message name="ListarContatosSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarContatosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarMiembrosSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarMiembros" />
+  </wsdl:message>
+  <wsdl:message name="ListarMiembrosSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarMiembrosResponse" />
+  </wsdl:message>
+  <wsdl:message name="LstHistorialDialogoSoapIn">
+    <wsdl:part name="parameters" element="tns:LstHistorialDialogo" />
+  </wsdl:message>
+  <wsdl:message name="LstHistorialDialogoSoapOut">
+    <wsdl:part name="parameters" element="tns:LstHistorialDialogoResponse" />
+  </wsdl:message>
+  <wsdl:message name="LstHistorialDialogoContenidoSoapIn">
+    <wsdl:part name="parameters" element="tns:LstHistorialDialogoContenido" />
+  </wsdl:message>
+  <wsdl:message name="LstHistorialDialogoContenidoSoapOut">
+    <wsdl:part name="parameters" element="tns:LstHistorialDialogoContenidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="LstHistorialDialogoContenidoLikesSoapIn">
+    <wsdl:part name="parameters" element="tns:LstHistorialDialogoContenidoLikes" />
+  </wsdl:message>
+  <wsdl:message name="LstHistorialDialogoContenidoLikesSoapOut">
+    <wsdl:part name="parameters" element="tns:LstHistorialDialogoContenidoLikesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsMiembrodeGrupoSoapIn">
+    <wsdl:part name="parameters" element="tns:IsMiembrodeGrupo" />
+  </wsdl:message>
+  <wsdl:message name="IsMiembrodeGrupoSoapOut">
+    <wsdl:part name="parameters" element="tns:IsMiembrodeGrupoResponse" />
+  </wsdl:message>
+  <wsdl:message name="LstContactSendtoGrupoSoapIn">
+    <wsdl:part name="parameters" element="tns:LstContactSendtoGrupo" />
+  </wsdl:message>
+  <wsdl:message name="LstContactSendtoGrupoSoapOut">
+    <wsdl:part name="parameters" element="tns:LstContactSendtoGrupoResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarMensajeyContenidoServerSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistrarMensajeyContenidoServer" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarMensajeyContenidoServerSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistrarMensajeyContenidoServerResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarMensajeyContenidoClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistrarMensajeyContenidoCliente" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarMensajeyContenidoClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistrarMensajeyContenidoClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="DetalleContactoHttpGetIn">
+    <wsdl:part name="CodPersonal" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DetalleContactoHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="ListarContatosHttpGetIn">
+    <wsdl:part name="NOMBRECONTACTO" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ListarContatosHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="ListarMiembrosHttpGetIn">
+    <wsdl:part name="IdContacto" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ListarMiembrosHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="LstHistorialDialogoHttpGetIn">
+    <wsdl:part name="IdContactoOrg" type="s:string" />
+    <wsdl:part name="IdContactoDes" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LstHistorialDialogoHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="LstHistorialDialogoContenidoHttpGetIn">
+    <wsdl:part name="Idmsg" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LstHistorialDialogoContenidoHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="LstHistorialDialogoContenidoLikesHttpGetIn">
+    <wsdl:part name="IdContents" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LstHistorialDialogoContenidoLikesHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="IsMiembrodeGrupoHttpGetIn">
+    <wsdl:part name="IdContactGrupo" type="s:string" />
+    <wsdl:part name="CodPersonal" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IsMiembrodeGrupoHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="LstContactSendtoGrupoHttpGetIn">
+    <wsdl:part name="IdContactGrupo" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LstContactSendtoGrupoHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarMensajeyContenidoClienteHttpGetIn">
+    <wsdl:part name="IdMiembro" type="s:string" />
+    <wsdl:part name="Texto" type="s:string" />
+    <wsdl:part name="IdContactOrg" type="s:string" />
+    <wsdl:part name="IdContactDes" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarMensajeyContenidoClienteHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DetalleContactoHttpPostIn">
+    <wsdl:part name="CodPersonal" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DetalleContactoHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="ListarContatosHttpPostIn">
+    <wsdl:part name="NOMBRECONTACTO" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ListarContatosHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="ListarMiembrosHttpPostIn">
+    <wsdl:part name="IdContacto" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ListarMiembrosHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="LstHistorialDialogoHttpPostIn">
+    <wsdl:part name="IdContactoOrg" type="s:string" />
+    <wsdl:part name="IdContactoDes" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LstHistorialDialogoHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="LstHistorialDialogoContenidoHttpPostIn">
+    <wsdl:part name="Idmsg" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LstHistorialDialogoContenidoHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="LstHistorialDialogoContenidoLikesHttpPostIn">
+    <wsdl:part name="IdContents" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LstHistorialDialogoContenidoLikesHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="IsMiembrodeGrupoHttpPostIn">
+    <wsdl:part name="IdContactGrupo" type="s:string" />
+    <wsdl:part name="CodPersonal" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="IsMiembrodeGrupoHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="LstContactSendtoGrupoHttpPostIn">
+    <wsdl:part name="IdContactGrupo" type="s:string" />
+    <wsdl:part name="UserName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LstContactSendtoGrupoHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarMensajeyContenidoClienteHttpPostIn">
+    <wsdl:part name="IdMiembro" type="s:string" />
+    <wsdl:part name="Texto" type="s:string" />
+    <wsdl:part name="IdContactOrg" type="s:string" />
+    <wsdl:part name="IdContactDes" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarMensajeyContenidoClienteHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="IChatBotManagerSoap">
+    <wsdl:operation name="DetalleContacto">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Detalle de Contancto</wsdl:documentation>
+      <wsdl:input message="tns:DetalleContactoSoapIn" />
+      <wsdl:output message="tns:DetalleContactoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarContatos">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Busca y Lista los Contactos según criterio o Lista Contactos por grupo</wsdl:documentation>
+      <wsdl:input message="tns:ListarContatosSoapIn" />
+      <wsdl:output message="tns:ListarContatosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarMiembros">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Busca y Lista Miembro de  Contactos id Contacto</wsdl:documentation>
+      <wsdl:input message="tns:ListarMiembrosSoapIn" />
+      <wsdl:output message="tns:ListarMiembrosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LstHistorialDialogo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Listado de Historial de Dialogo entre contactos</wsdl:documentation>
+      <wsdl:input message="tns:LstHistorialDialogoSoapIn" />
+      <wsdl:output message="tns:LstHistorialDialogoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LstHistorialDialogoContenido">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Listado de Historial de Dialogo entre contactos COntenido de mensajes</wsdl:documentation>
+      <wsdl:input message="tns:LstHistorialDialogoContenidoSoapIn" />
+      <wsdl:output message="tns:LstHistorialDialogoContenidoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LstHistorialDialogoContenidoLikes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Listado de Likes </wsdl:documentation>
+      <wsdl:input message="tns:LstHistorialDialogoContenidoLikesSoapIn" />
+      <wsdl:output message="tns:LstHistorialDialogoContenidoLikesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsMiembrodeGrupo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Verifica si es Miembro del undeterminado grupo y devuelve el nro  o Id de Miembro grupo</wsdl:documentation>
+      <wsdl:input message="tns:IsMiembrodeGrupoSoapIn" />
+      <wsdl:output message="tns:IsMiembrodeGrupoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LstContactSendtoGrupo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Lista contactos que enviaron mensajes a un determinado grupo grupo</wsdl:documentation>
+      <wsdl:input message="tns:LstContactSendtoGrupoSoapIn" />
+      <wsdl:output message="tns:LstContactSendtoGrupoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarMensajeyContenidoServer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Insertar Mensaje uy contenido, disponible del lado del servido</wsdl:documentation>
+      <wsdl:input message="tns:RegistrarMensajeyContenidoServerSoapIn" />
+      <wsdl:output message="tns:RegistrarMensajeyContenidoServerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarMensajeyContenidoClient">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Insertar Mensaje uy contenido, DIsponible del lado del CLiente</wsdl:documentation>
+      <wsdl:input name="RegistrarMensajeyContenidoCliente" message="tns:RegistrarMensajeyContenidoClienteSoapIn" />
+      <wsdl:output name="RegistrarMensajeyContenidoCliente" message="tns:RegistrarMensajeyContenidoClienteSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IChatBotManagerHttpGet">
+    <wsdl:operation name="DetalleContacto">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Detalle de Contancto</wsdl:documentation>
+      <wsdl:input message="tns:DetalleContactoHttpGetIn" />
+      <wsdl:output message="tns:DetalleContactoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarContatos">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Busca y Lista los Contactos según criterio o Lista Contactos por grupo</wsdl:documentation>
+      <wsdl:input message="tns:ListarContatosHttpGetIn" />
+      <wsdl:output message="tns:ListarContatosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarMiembros">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Busca y Lista Miembro de  Contactos id Contacto</wsdl:documentation>
+      <wsdl:input message="tns:ListarMiembrosHttpGetIn" />
+      <wsdl:output message="tns:ListarMiembrosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LstHistorialDialogo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Listado de Historial de Dialogo entre contactos</wsdl:documentation>
+      <wsdl:input message="tns:LstHistorialDialogoHttpGetIn" />
+      <wsdl:output message="tns:LstHistorialDialogoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LstHistorialDialogoContenido">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Listado de Historial de Dialogo entre contactos COntenido de mensajes</wsdl:documentation>
+      <wsdl:input message="tns:LstHistorialDialogoContenidoHttpGetIn" />
+      <wsdl:output message="tns:LstHistorialDialogoContenidoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LstHistorialDialogoContenidoLikes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Listado de Likes </wsdl:documentation>
+      <wsdl:input message="tns:LstHistorialDialogoContenidoLikesHttpGetIn" />
+      <wsdl:output message="tns:LstHistorialDialogoContenidoLikesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsMiembrodeGrupo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Verifica si es Miembro del undeterminado grupo y devuelve el nro  o Id de Miembro grupo</wsdl:documentation>
+      <wsdl:input message="tns:IsMiembrodeGrupoHttpGetIn" />
+      <wsdl:output message="tns:IsMiembrodeGrupoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LstContactSendtoGrupo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Lista contactos que enviaron mensajes a un determinado grupo grupo</wsdl:documentation>
+      <wsdl:input message="tns:LstContactSendtoGrupoHttpGetIn" />
+      <wsdl:output message="tns:LstContactSendtoGrupoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarMensajeyContenidoClient">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Insertar Mensaje uy contenido, DIsponible del lado del CLiente</wsdl:documentation>
+      <wsdl:input name="RegistrarMensajeyContenidoCliente" message="tns:RegistrarMensajeyContenidoClienteHttpGetIn" />
+      <wsdl:output name="RegistrarMensajeyContenidoCliente" message="tns:RegistrarMensajeyContenidoClienteHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IChatBotManagerHttpPost">
+    <wsdl:operation name="DetalleContacto">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Detalle de Contancto</wsdl:documentation>
+      <wsdl:input message="tns:DetalleContactoHttpPostIn" />
+      <wsdl:output message="tns:DetalleContactoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarContatos">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Busca y Lista los Contactos según criterio o Lista Contactos por grupo</wsdl:documentation>
+      <wsdl:input message="tns:ListarContatosHttpPostIn" />
+      <wsdl:output message="tns:ListarContatosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarMiembros">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Busca y Lista Miembro de  Contactos id Contacto</wsdl:documentation>
+      <wsdl:input message="tns:ListarMiembrosHttpPostIn" />
+      <wsdl:output message="tns:ListarMiembrosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LstHistorialDialogo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Listado de Historial de Dialogo entre contactos</wsdl:documentation>
+      <wsdl:input message="tns:LstHistorialDialogoHttpPostIn" />
+      <wsdl:output message="tns:LstHistorialDialogoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LstHistorialDialogoContenido">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Listado de Historial de Dialogo entre contactos COntenido de mensajes</wsdl:documentation>
+      <wsdl:input message="tns:LstHistorialDialogoContenidoHttpPostIn" />
+      <wsdl:output message="tns:LstHistorialDialogoContenidoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LstHistorialDialogoContenidoLikes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Listado de Likes </wsdl:documentation>
+      <wsdl:input message="tns:LstHistorialDialogoContenidoLikesHttpPostIn" />
+      <wsdl:output message="tns:LstHistorialDialogoContenidoLikesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsMiembrodeGrupo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Verifica si es Miembro del undeterminado grupo y devuelve el nro  o Id de Miembro grupo</wsdl:documentation>
+      <wsdl:input message="tns:IsMiembrodeGrupoHttpPostIn" />
+      <wsdl:output message="tns:IsMiembrodeGrupoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LstContactSendtoGrupo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Lista contactos que enviaron mensajes a un determinado grupo grupo</wsdl:documentation>
+      <wsdl:input message="tns:LstContactSendtoGrupoHttpPostIn" />
+      <wsdl:output message="tns:LstContactSendtoGrupoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarMensajeyContenidoClient">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Insertar Mensaje uy contenido, DIsponible del lado del CLiente</wsdl:documentation>
+      <wsdl:input name="RegistrarMensajeyContenidoCliente" message="tns:RegistrarMensajeyContenidoClienteHttpPostIn" />
+      <wsdl:output name="RegistrarMensajeyContenidoCliente" message="tns:RegistrarMensajeyContenidoClienteHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IChatBotManagerSoap" type="tns:IChatBotManagerSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DetalleContacto">
+      <soap:operation soapAction="http://tempuri.org/DetalleContacto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarContatos">
+      <soap:operation soapAction="http://tempuri.org/ListarContatos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarMiembros">
+      <soap:operation soapAction="http://tempuri.org/ListarMiembros" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LstHistorialDialogo">
+      <soap:operation soapAction="http://tempuri.org/LstHistorialDialogo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LstHistorialDialogoContenido">
+      <soap:operation soapAction="http://tempuri.org/LstHistorialDialogoContenido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LstHistorialDialogoContenidoLikes">
+      <soap:operation soapAction="http://tempuri.org/LstHistorialDialogoContenidoLikes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsMiembrodeGrupo">
+      <soap:operation soapAction="http://tempuri.org/IsMiembrodeGrupo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LstContactSendtoGrupo">
+      <soap:operation soapAction="http://tempuri.org/LstContactSendtoGrupo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarMensajeyContenidoServer">
+      <soap:operation soapAction="http://tempuri.org/RegistrarMensajeyContenidoServer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarMensajeyContenidoClient">
+      <soap:operation soapAction="http://tempuri.org/RegistrarMensajeyContenidoCliente" style="document" />
+      <wsdl:input name="RegistrarMensajeyContenidoCliente">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RegistrarMensajeyContenidoCliente">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="IChatBotManagerSoap12" type="tns:IChatBotManagerSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DetalleContacto">
+      <soap12:operation soapAction="http://tempuri.org/DetalleContacto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarContatos">
+      <soap12:operation soapAction="http://tempuri.org/ListarContatos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarMiembros">
+      <soap12:operation soapAction="http://tempuri.org/ListarMiembros" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LstHistorialDialogo">
+      <soap12:operation soapAction="http://tempuri.org/LstHistorialDialogo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LstHistorialDialogoContenido">
+      <soap12:operation soapAction="http://tempuri.org/LstHistorialDialogoContenido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LstHistorialDialogoContenidoLikes">
+      <soap12:operation soapAction="http://tempuri.org/LstHistorialDialogoContenidoLikes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsMiembrodeGrupo">
+      <soap12:operation soapAction="http://tempuri.org/IsMiembrodeGrupo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LstContactSendtoGrupo">
+      <soap12:operation soapAction="http://tempuri.org/LstContactSendtoGrupo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarMensajeyContenidoServer">
+      <soap12:operation soapAction="http://tempuri.org/RegistrarMensajeyContenidoServer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarMensajeyContenidoClient">
+      <soap12:operation soapAction="http://tempuri.org/RegistrarMensajeyContenidoCliente" style="document" />
+      <wsdl:input name="RegistrarMensajeyContenidoCliente">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="RegistrarMensajeyContenidoCliente">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="IChatBotManagerHttpGet" type="tns:IChatBotManagerHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="DetalleContacto">
+      <http:operation location="/DetalleContacto" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarContatos">
+      <http:operation location="/ListarContatos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarMiembros">
+      <http:operation location="/ListarMiembros" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LstHistorialDialogo">
+      <http:operation location="/LstHistorialDialogo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LstHistorialDialogoContenido">
+      <http:operation location="/LstHistorialDialogoContenido" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LstHistorialDialogoContenidoLikes">
+      <http:operation location="/LstHistorialDialogoContenidoLikes" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsMiembrodeGrupo">
+      <http:operation location="/IsMiembrodeGrupo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LstContactSendtoGrupo">
+      <http:operation location="/LstContactSendtoGrupo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarMensajeyContenidoClient">
+      <http:operation location="/RegistrarMensajeyContenidoCliente" />
+      <wsdl:input name="RegistrarMensajeyContenidoCliente">
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output name="RegistrarMensajeyContenidoCliente">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="IChatBotManagerHttpPost" type="tns:IChatBotManagerHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="DetalleContacto">
+      <http:operation location="/DetalleContacto" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarContatos">
+      <http:operation location="/ListarContatos" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarMiembros">
+      <http:operation location="/ListarMiembros" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LstHistorialDialogo">
+      <http:operation location="/LstHistorialDialogo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LstHistorialDialogoContenido">
+      <http:operation location="/LstHistorialDialogoContenido" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LstHistorialDialogoContenidoLikes">
+      <http:operation location="/LstHistorialDialogoContenidoLikes" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsMiembrodeGrupo">
+      <http:operation location="/IsMiembrodeGrupo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LstContactSendtoGrupo">
+      <http:operation location="/LstContactSendtoGrupo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarMensajeyContenidoClient">
+      <http:operation location="/RegistrarMensajeyContenidoCliente" />
+      <wsdl:input name="RegistrarMensajeyContenidoCliente">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="RegistrarMensajeyContenidoCliente">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IChatBotManager">
+    <wsdl:port name="IChatBotManagerSoap" binding="tns:IChatBotManagerSoap">
+      <soap:address location="http://localhost:1000/Core/HelpDesk/ChatBot/IChatBotManager.asmx" />
+    </wsdl:port>
+    <wsdl:port name="IChatBotManagerSoap12" binding="tns:IChatBotManagerSoap12">
+      <soap12:address location="http://localhost:1000/Core/HelpDesk/ChatBot/IChatBotManager.asmx" />
+    </wsdl:port>
+    <wsdl:port name="IChatBotManagerHttpGet" binding="tns:IChatBotManagerHttpGet">
+      <http:address location="http://localhost:1000/Core/HelpDesk/ChatBot/IChatBotManager.asmx" />
+    </wsdl:port>
+    <wsdl:port name="IChatBotManagerHttpPost" binding="tns:IChatBotManagerHttpPost">
+      <http:address location="http://localhost:1000/Core/HelpDesk/ChatBot/IChatBotManager.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
