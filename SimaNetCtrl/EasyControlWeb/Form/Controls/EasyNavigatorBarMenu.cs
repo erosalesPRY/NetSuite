@@ -499,15 +499,26 @@ namespace EasyControlWeb.Form.Controls
                     _a = EasyUtilitario.Helper.HtmlControlsDesign.CrearControl("a", "nav-item nav-link");
                     _a.Attributes.Add("href", "#");
                     _a.Style.Add("margin-top", "10px");
-                    HtmlGenericControl _i = EasyUtilitario.Helper.HtmlControlsDesign.CrearControl("i", oEasyNavigatorBarIconBE.fa_icon);
-                    _i.Style.Add("color", this.IconColor);
-                    _i.Attributes.Add(EasyUtilitario.Enumerados.EventosJavaScript.onmouseout.ToString(), "this.style.color='" + this.IconColor + "';");
-                    _i.Attributes.Add(EasyUtilitario.Enumerados.EventosJavaScript.onmouseover.ToString(), "this.style.color='" + this.IconColorOver + "';");
-
-                    _a.Controls.Add(_i);
-                    if (oEasyNavigatorBarIconBE.call_fcScript != string.Empty)
+                    if (oEasyNavigatorBarIconBE.TipoImg == false)
                     {
-                        _a.Attributes.Add(EasyUtilitario.Enumerados.EventosJavaScript.onclick.ToString(), oEasyNavigatorBarIconBE.call_fcScript);
+                        HtmlGenericControl _i = EasyUtilitario.Helper.HtmlControlsDesign.CrearControl("i", oEasyNavigatorBarIconBE.fa_icon);
+                        _i.Style.Add("color", this.IconColor);
+                        _i.Attributes.Add(EasyUtilitario.Enumerados.EventosJavaScript.onmouseout.ToString(), "this.style.color='" + this.IconColor + "';");
+                        _i.Attributes.Add(EasyUtilitario.Enumerados.EventosJavaScript.onmouseover.ToString(), "this.style.color='" + this.IconColorOver + "';");
+
+                        _a.Controls.Add(_i);
+
+                        if (oEasyNavigatorBarIconBE.call_fcScript != string.Empty)
+                        {
+                            _a.Attributes.Add(EasyUtilitario.Enumerados.EventosJavaScript.onclick.ToString(), oEasyNavigatorBarIconBE.call_fcScript);
+                        }
+                    }
+                    else {
+                        HtmlImage img = new HtmlImage();
+                        img.Src = oEasyNavigatorBarIconBE.fa_icon;
+                        img.Attributes["style"] = "width: 25px;height:25px;";
+                        img.Attributes["name"] = "_Infinity";
+                        _a.Controls.Add(img);
                     }
                     _NF.Controls.Add(_a);
                 }

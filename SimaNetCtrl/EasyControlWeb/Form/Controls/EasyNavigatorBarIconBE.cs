@@ -10,5 +10,6 @@ namespace EasyControlWeb.Form.Controls
         public string fa_icon { get; set; }
         public string Text { get; set; }
         public string call_fcScript { get; set; }
+        public bool TipoImg { get; set; }
     }
 }

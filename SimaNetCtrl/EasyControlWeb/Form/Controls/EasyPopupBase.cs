@@ -58,7 +58,11 @@ namespace EasyControlWeb.Form.Controls
         public  string fncScriptAceptar {
             get;set;
          }
-      
+        public string fncScriptOnClose
+        {
+            get; set;
+        }
+
         public bool RunatServer { get; set; }
 
 
@@ -142,7 +146,7 @@ namespace EasyControlWeb.Form.Controls
             string PrintBorder = ((IsDesign() == Si_No) ? BorderDrag : "");
             string ClaseModal = ((IsDesign() == Si_No) ? "ModaVisible" : "modal");
             string TextHolder = ((IsDesign() == Si_No) ? "Arrastre Aqui el Control EasyFormDesign...." : "");
-            output.Write("<div id=" + cmll + this.ClientID + cmll + " class=" + cmll + ClaseModal + " fade " + cmll + " role ='dialog' >\n");
+            output.Write("<div id=" + cmll + this.ClientID + cmll + " name=" + cmll + this.ID + cmll + "  class=" + cmll + ClaseModal + " fade " + cmll + " role ='dialog' >\n");
            // output.Write("            <div class=" + cmll + "modal-dialog" + cmll + ">\n");
             output.Write("            <div class=" + cmll + sModal  + cmll + ">\n");
             output.Write("                <div class=" + cmll + "modal-content" + cmll + " >\n");
@@ -222,6 +226,7 @@ namespace EasyControlWeb.Form.Controls
             if (!DesignMode)
             {
                 //Referencia: https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_ref_js_modal_backdrop&stacked=h
+                string _onCloseFNC = (((this.fncScriptOnClose!=null) && (this.fncScriptOnClose.Length > 0)) ? this.fncScriptOnClose + "();" : "");
                 string NameProgress = "jNet.get('" + this.ClientID + @"_ContentProgress');";
                 string Script = @"<script> 
                                     " + ClientID + @".Titulo ='';
@@ -235,6 +240,7 @@ namespace EasyControlWeb.Form.Controls
                                         }
                                     " + ClientID + @".Close=function(){
                                          $('#" + ClientID + @"btnClose').click();
+                                          " + ClientID + @".onClose();
                                     }
                                     " + ClientID + @".Param=SIMA.Param;
                                     " + ClientID + @".UrlReload='';
@@ -272,7 +278,6 @@ namespace EasyControlWeb.Form.Controls
                                                                             " + ClientID + @".ProgressBar.Hide();
                                                                         },
                                                                         error: function (jqXHR, textStatus, errorThrown) {
-                                                                            alert('Error');
                                                                             var msg = '';
                                                                             if (jqXHR.status == 404) {msg = 'No encontrado';} 
                                                                             else if (jqXHR.status == 500) {msg = 'Error ejecutando';}
@@ -293,6 +298,7 @@ namespace EasyControlWeb.Form.Controls
                                                     jQuery('#" + ClientID + "_LoadPage" + @"').empty();
                                                     theForm = document.forms[" + ClientID + @".FormContextName]; 
                                                 }
+                                               " + ClientID + @".onClose();
                                         }
                                         " + ClientID + @".ProgressBar={};
 
@@ -329,19 +335,12 @@ namespace EasyControlWeb.Form.Controls
                                               var bProgress =  jNet.get('" + this.ClientID + @"_Progress');
                                                bProgress.innerText=TextWait;
                                         }
+                                         " + ClientID + @".onClose=function(){
+                                           " + _onCloseFNC + @"
+                                         }
                                   </script>
                                     ";
                 (new LiteralControl(Script)).RenderControl(writer);
-
-                /*atributos añadidos
-                writer.AddStyleAttribute("width", "600px");
-                writer.RenderBeginTag(HtmlTextWriterTag.Div);
-
-                writer.AddStyleAttribute("float", "left");
-                writer.AddStyleAttribute("width", "280px");
-                writer.AddStyleAttribute("padding", "10px");
-               */
-
             }
         }
 
