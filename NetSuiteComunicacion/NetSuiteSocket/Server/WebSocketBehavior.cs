@@ -559,12 +559,12 @@ namespace NetSuiteSocket.Server
             int i = 0;
             //if(this.QueryString[""])
        if (_sessions.Count > 0) {
-         /*   foreach (var s in _sessions.Sessions) {
-                    var Sess =s.Query;
+            foreach (var s in _sessions.Sessions) {
+                    var Sess =s.ToString();
                     i++;
-            }     */              
+            }                  
         }
-
+        //Busca y SI ya existe  no lo vuelve a abrir ni a agregar
 
       _id = _sessions.Add (this);
 
