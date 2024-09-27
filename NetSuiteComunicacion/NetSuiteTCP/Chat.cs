@@ -107,9 +107,10 @@ namespace NetSuiteTCP
                     chatPaqueteBE.name = getName();
                     chatPaqueteBE.platform = QueryString[KEYQParamPlataforma];
                     chatPaqueteBE.status = "0";
-                    //Avisar a todos los contactos que el usuario termino la session
+                    //Actualiza el estado del que cerro la session
 
-                    Sessions.Broadcast(chatPaqueteBE.ToSerializedJSon());
+                    //Avisar a todos los contactos que el usuario termino la session
+                    Sessions.Broadcast("chatCloseContact|" +chatPaqueteBE.ToSerializedJSon());
                     break;
                 default:
                     //cancela el cierre de alguna manera
