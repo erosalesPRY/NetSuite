@@ -29,6 +29,8 @@
 using System;
 using System.Collections.Specialized;
 using System.IO;
+using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Security.Principal;
 using System.ServiceModel.Channels;
 using NetSuiteSocket.Net;
@@ -554,29 +556,34 @@ namespace NetSuiteSocket.Server
       OnMessage (e);
     }
 
+
     private void onOpen (object sender, EventArgs e)
     {
-            int i = 0;
-            //if(this.QueryString[""])
-       if (_sessions.Count > 0) {
-            foreach (var s in _sessions.Sessions) {
-                    var Sess =s.ToString();
-                    i++;
-            }                  
-        }
-        //Busca y SI ya existe  no lo vuelve a abrir ni a agregar
+            bool Existe = false;
+            ConeccionBE ContecionEtranteBE = new ConeccionBE(this._websocket.Url.Query);
+            if (_sessions.Count > 0) {
+                foreach (var s in _sessions.Sessions.ToList()) {
 
-      _id = _sessions.Add (this);
+                        ConeccionBE ConecionExistenteBE = new ConeccionBE(s.WebSocket.Url.Query);
+                        if (ConecionExistenteBE.name.ToString().Equals(ContecionEtranteBE.name)) {
+                            Existe=true;
+                        }
+                }                  
+            }
+            //Busca y SI ya existe  no lo vuelve a abrir ni a agregar
+            if (Existe == false)
+            {
+                _id = _sessions.Add(this);
+                if (_id == null)
+                {
+                    _websocket.Close(CloseStatusCode.Away);
+                    return;
+                }
 
-      if (_id == null) {
-        _websocket.Close (CloseStatusCode.Away);
+                _startTime = DateTime.Now;
 
-        return;
-      }
-
-      _startTime = DateTime.Now;
-
-      OnOpen ();
+                OnOpen();
+            }
     }
 
     #endregion
