@@ -106,6 +106,7 @@ namespace NetSuiteTCP
                     ChatPaqueteBE chatPaqueteBE = new ChatPaqueteBE();
                     chatPaqueteBE.name = getName();
                     chatPaqueteBE.platform = QueryString[KEYQParamPlataforma];
+                    chatPaqueteBE.codPersonal = QueryString[KEYQParamCodPer];
                     chatPaqueteBE.status = "0";
                     //Actualiza el estado del que cerro la session
 
@@ -127,10 +128,21 @@ namespace NetSuiteTCP
 
     }
 
-    protected override void OnMessage (MessageEventArgs e)
-    {
-      Sessions.Broadcast (e.Data);
-    }
+        protected override void OnMessage(MessageEventArgs e)
+        {
+            string[] strPaquete = e.Data.Split('|');
+            switch (strPaquete[0]) {
+                case "CheckStatus":
+                    string arrData = strPaquete[1];
+
+                    break;
+                default:
+                     Sessions.Broadcast(e.Data);
+                    break;
+            }
+           // ConeccionBE ContecionEtranteBE = new ConeccionBE(this._websocket.Url.Query);
+
+        }
 
     protected override void OnOpen ()
     {
